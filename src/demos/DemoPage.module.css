@@ -1,0 +1,209 @@
+/* Mise en page commune aux pages de démo jouable */
+/* Mobile : en-tête → lecteur → infos. Desktop : lecteur à gauche, texte à droite. */
+.page {
+  display: grid;
+  grid-template-areas:
+    'head'
+    'stage'
+    'info';
+  gap: 1rem;
+}
+
+/* Mobile : en-tête compact pour que l'écran + la manette tiennent sans défiler */
+@media (max-width: 1023px) {
+  .head {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 1rem;
+  }
+
+  .head :global(.tag-list) {
+    display: none;
+  }
+
+  .head .title {
+    font-size: 1.6rem;
+  }
+
+  .info {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    grid-template-areas:
+      'stage head'
+      'stage info';
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 3rem;
+    row-gap: 1.1rem;
+    align-items: center;
+  }
+
+  .head {
+    align-self: end;
+  }
+
+  .info {
+    align-self: start;
+  }
+}
+
+.head {
+  grid-area: head;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.stage {
+  grid-area: stage;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease);
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+.title {
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 650;
+}
+
+.intro {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.games li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding-block: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.games li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.gameName {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.gameHow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.note {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Le tableau clavier n'a pas de sens sur écran tactile (manette affichée) */
+.controls {
+  width: 100%;
+}
+
+@media (pointer: coarse) {
+  .controls {
+    display: none;
+  }
+}
+
+.controls dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.4rem 1rem;
+}
+
+.controls dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.controls dt {
+  color: var(--text-muted);
+}
+
+.controls dd {
+  margin: 0;
+}
+
+.controls kbd {
+  display: inline-block;
+  min-width: 1.6rem;
+  padding: 0.1rem 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-align: center;
+  color: var(--text);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+}
+
+.credit {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.credit a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.credit a:hover {
+  color: var(--text);
+}

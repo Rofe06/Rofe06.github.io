@@ -1,0 +1,52 @@
+.backdrop {
+  --mx: 70vw;
+  --my: 35vh;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+.blobA {
+  width: min(520px, 80vw);
+  aspect-ratio: 1;
+  top: -12%;
+  left: -12%;
+  background: var(--accent-1);
+}
+
+.blobB {
+  width: min(440px, 70vw);
+  aspect-ratio: 1;
+  bottom: -12%;
+  right: -10%;
+  background: var(--accent-2);
+  opacity: 0.09;
+  animation-delay: -11s;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    520px circle at var(--mx) var(--my),
+    rgb(124 92 255 / 0.09),
+    rgb(34 211 238 / 0.035) 40%,
+    transparent 70%
+  );
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(6%, 8%, 0) scale(1.08);
+  }
+}

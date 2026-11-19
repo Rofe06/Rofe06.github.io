@@ -1,0 +1,329 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+/* ---- Cadre façon console : sobre, sombre, liseré dégradé discret ---- */
+.frame {
+  position: relative;
+  /* Assez petit pour tenir dans la hauteur d'écran disponible */
+  width: min(100%, 500px, calc((100dvh - 310px) * 1.111 + 40px));
+  min-width: min(100%, 260px);
+  padding: clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) 0.6rem;
+  border-radius: 18px 18px 18px 42px;
+  background: linear-gradient(160deg, #1a1d27, #11131a);
+  border: 1px solid var(--border-strong);
+  box-shadow:
+    0 30px 60px -30px rgb(0 0 0 / 0.8),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+  outline: none;
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgb(124 92 255 / 0.5), transparent 35%, transparent 65%, rgb(34 211 238 / 0.4));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.frame[data-status='running']::before {
+  opacity: 1;
+}
+
+.screen {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 4px #0b0c11,
+    0 0 0 5px rgb(255 255 255 / 0.06);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 160 / 144;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  background: rgb(11 13 18 / 0.62);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgb(255 255 255 / 0.15);
+  border-top-color: var(--accent-2);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3a2230;
+  transition:
+    background var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.led[data-on='true'] {
+  background: #ff4d6d;
+  box-shadow: 0 0 8px #ff4d6d;
+}
+
+/* Plein écran : l'écran s'adapte à la fenêtre */
+.frame:fullscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0;
+  background: #07080b;
+}
+
+.frame:fullscreen .screen {
+  width: min(100vw - 32px, (100vh - 80px) * 1.111);
+}
+
+/* ---- Barre d'outils ---- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: min(100%, 500px);
+}
+
+.tools {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tool {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: rgb(255 255 255 / 0.02);
+  transition:
+    color var(--dur) var(--ease),
+    background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.tool svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tool:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: rgb(255 255 255 / 0.05);
+}
+
+.tool:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.palettes {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.swatch {
+  display: grid;
+  grid-template-columns: repeat(4, 8px);
+  height: 26px;
+  padding: 0 7px;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.swatch span {
+  height: 8px;
+}
+
+.swatch span:first-child {
+  border-radius: 2px 0 0 2px;
+}
+
+.swatch span:last-child {
+  border-radius: 0 2px 2px 0;
+}
+
+.swatch:hover {
+  border-color: var(--border-strong);
+}
+
+.swatch[aria-pressed='true'] {
+  border-color: rgb(124 92 255 / 0.6);
+  box-shadow: 0 0 0 1px rgb(124 92 255 / 0.25);
+}
+
+/* ---- Manette tactile ---- */
+.pad {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .pad {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    width: min(100%, 500px);
+    padding: 0.25rem 0.25rem 0;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+.padButton {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  background: linear-gradient(180deg, #1d2130, #151821);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 3px 0 #0a0b0f;
+  touch-action: none;
+  transition:
+    transform 60ms ease,
+    box-shadow 60ms ease,
+    color 60ms ease;
+}
+
+.padButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #0a0b0f;
+  color: var(--text);
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  grid-template-rows: repeat(3, 44px);
+}
+
+.dpad .padButton {
+  font-size: 0.7rem;
+  border-radius: 8px;
+}
+
+.up {
+  grid-area: 1 / 2;
+}
+
+.left {
+  grid-area: 2 / 1;
+}
+
+.right {
+  grid-area: 2 / 3;
+}
+
+.down {
+  grid-area: 3 / 2;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pill {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+.ab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: rotate(-20deg);
+}
+
+.round {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.a {
+  color: var(--text);
+  border-color: rgb(124 92 255 / 0.5);
+}

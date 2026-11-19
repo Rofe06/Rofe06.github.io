@@ -1,0 +1,122 @@
+.timeline {
+  position: relative;
+  max-width: 760px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ligne verticale en dégradé, qui s'estompe en bas */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  left: 17px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2) 55%, transparent);
+  opacity: 0.55;
+}
+
+.item {
+  position: relative;
+  padding-left: 3.5rem;
+  padding-bottom: 2.75rem;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 0 0 5px var(--bg);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.4rem;
+  min-height: 35px;
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-2);
+}
+
+.kind {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.org {
+  margin-top: 0.2rem;
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.org span {
+  color: var(--text-dim);
+}
+
+.description {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.tags {
+  margin-top: 1rem;
+}
+
+/* ---- Grand écran : timeline horizontale pour tenir sur une seule page ---- */
+@media (min-width: 1024px) {
+  .timeline {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 1fr);
+    gap: 2.5rem;
+    max-width: none;
+    overflow-x: auto;
+  }
+
+  .timeline::before {
+    top: 17px;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2) 55%, transparent);
+  }
+
+  .item {
+    padding: 3.25rem 0 0;
+  }
+
+  .meta {
+    min-height: 0;
+  }
+}

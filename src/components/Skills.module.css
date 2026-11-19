@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 1rem;
+}
+
+/* Deuxième rangée : langues + compétences humaines, deux colonnes plus larges */
+.secondary {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  margin-top: 1rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.35rem 1.5rem;
+}
+
+.title {
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+}
+
+.language {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.4rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.language:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.language dt {
+  color: var(--text);
+}
+
+.language dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.note {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}

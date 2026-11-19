@@ -1,0 +1,40 @@
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: #0b0d12;
+  --bg-elev: #12151c;
+  --bg-elev-2: #181c25;
+  --border: rgb(255 255 255 / 0.07);
+  --border-strong: rgb(255 255 255 / 0.14);
+
+  /* Texte */
+  --text: #e6e8ee;
+  --text-muted: #8a90a0;
+  --text-dim: #5f6676;
+
+  /* Accents : utilisés avec parcimonie */
+  --accent-1: #7c5cff;
+  --accent-2: #22d3ee;
+  --accent-gradient: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  --accent-soft: rgb(124 92 255 / 0.12);
+  --success: #34d399;
+
+  /* Typographie */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Mise en page */
+  --container: 1120px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --nav-h: 64px;
+  /* Espace réservé à l'island de navigation en bas */
+  --island-space: 84px;
+  --page-gap: clamp(16px, 4vh, 40px);
+  --radius: 14px;
+  --radius-sm: 8px;
+
+  /* Mouvement */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 250ms;
+}
