@@ -25,7 +25,8 @@
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
   /* Mise en page */
-  --container: 1120px;
+  /* En rem : la colonne grandit avec la taille de texte sur les grands écrans */
+  --container: 80rem;
   --gutter: clamp(16px, 4vw, 32px);
   --nav-h: 64px;
   /* Espace réservé à l'island de navigation en bas */

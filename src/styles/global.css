@@ -11,6 +11,9 @@
 }
 
 html {
+  /* Taille de base fluide : 16px jusqu'à ~1440px de large, puis jusqu'à 19px
+     sur les très grands écrans, pour que le site occupe mieux l'espace. */
+  font-size: clamp(100%, 0.35vw + 0.65rem, 118.75%);
   -webkit-text-size-adjust: 100%;
 }
 

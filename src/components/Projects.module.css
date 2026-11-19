@@ -9,3 +9,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Très grands écrans : 3 colonnes pour occuper la largeur */
+@media (min-width: 1800px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
