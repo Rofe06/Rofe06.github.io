@@ -57,7 +57,7 @@ export const profile: Profile = {
   photo: undefined, // TODO : ex. '/avatar.jpg'
   links: {
     github: 'https://github.com/Rofe06',
-    linkedin: 'https://www.linkedin.com/in/raphael-guillot-145a94336',
+    linkedin: 'https://www.linkedin.com/in/raphaël-guillot-145a94336/',
     email: 'raphael.guillot@epitech.eu',
   },
   cv: undefined, // TODO : ex. { fr: '/cv-fr.pdf', en: '/cv-en.pdf' }
