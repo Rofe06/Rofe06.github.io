@@ -12,8 +12,10 @@ export interface Profile {
   available: boolean
   about: Localized[]
   facts: { label: Localized; value: Localized }[]
-  /** Chemin d'une photo placée dans /public (ex. '/avatar.jpg'). Sans photo, les initiales sont affichées. */
+  /** Photo de la page « À propos » (dans /public). Sans photo, les initiales sont affichées. */
   photo?: string
+  /** Portrait détouré (fond transparent) affiché sur l'accueil, au-dessus de la fenêtre de code. */
+  portrait?: string
   links: {
     github: string
     linkedin?: string
@@ -54,7 +56,9 @@ export const profile: Profile = {
     { label: { fr: 'École', en: 'School' }, value: { fr: 'Epitech', en: 'Epitech' } },
   ],
 
-  photo: undefined, // TODO : ex. '/avatar.jpg'
+  // Versions WebP optimisées de public/ppwbg.png et public/pp.png
+  photo: '/images/photo.webp',
+  portrait: '/images/portrait.webp',
   links: {
     github: 'https://github.com/Rofe06',
     linkedin: 'https://www.linkedin.com/in/raphaël-guillot-145a94336/',

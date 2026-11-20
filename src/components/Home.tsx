@@ -63,7 +63,20 @@ export function Home() {
         </ul>
       </div>
 
-      <CodeCard />
+      <div className={styles.visual}>
+        {profile.portrait && (
+          <img
+            className={`${styles.portrait} ${styles.enter}`}
+            style={{ animationDelay: '200ms' }}
+            src={profile.portrait}
+            alt={profile.name}
+            width={640}
+            height={652}
+            decoding="async"
+          />
+        )}
+        <CodeCard />
+      </div>
     </div>
   )
 }

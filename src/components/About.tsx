@@ -31,13 +31,15 @@ export function About() {
 
         <Reveal delay={120}>
           <aside className={`card ${styles.profileCard}`}>
-            <div className={styles.avatar}>
-              {profile.photo ? (
-                <img src={profile.photo} alt={profile.name} width={96} height={96} />
-              ) : (
+            {profile.photo ? (
+              <div className={styles.photo}>
+                <img src={profile.photo} alt={profile.name} width={800} height={800} decoding="async" />
+              </div>
+            ) : (
+              <div className={styles.avatar}>
                 <span aria-hidden>{initials(profile.name)}</span>
-              )}
-            </div>
+              </div>
+            )}
             <dl className={styles.facts}>
               {profile.facts.map((fact, i) => (
                 <div key={i} className={styles.fact}>
