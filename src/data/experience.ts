@@ -23,7 +23,7 @@ export const journey: JourneyItem[] = [
   },
   {
     kind: 'education',
-    period: { fr: '2024 — Aujourd’hui', en: '2024 — Present' },
+    period: { fr: '2024 - Auj.', en: '2024 - Present' },
     title: {
       fr: 'Programme Grande École — Expert en technologies de l’information',
       en: 'Master’s Program — Expert in Information Technology',
@@ -44,14 +44,24 @@ export const journey: JourneyItem[] = [
       en: 'Development of a React dashboard for contract annualization, contract management and leave management.',
     },
   },
-    {
-      kind: 'work',
-      period: { fr: '2026', en: '2026' },
-      title: { fr: 'Auto-Entrepreneur', en: 'Self-Employed' },
-      organization: '',
-      description: {
-        fr: 'Entrepreneur Freelance développant des Solutions Web pour des PME et Services Com-munaux.',
-        en: 'Freelance Entrepreneur developing Web Solutions for SMEs and Municipal Services.',
-      },
-    },  
+  {
+    kind: 'work',
+    period: { fr: '2026', en: '2026' },
+    title: { fr: 'Auto-Entrepreneur', en: 'Self-Employed' },
+    organization: '',
+    description: {
+      fr: 'Entrepreneur Freelance développant des Solutions Web pour des PME et Services Communaux.',
+      en: 'Freelance Entrepreneur developing Web Solutions for SMEs and Municipal Services.',
+    },
+  },
+  {
+    kind: 'work',
+    period: { fr: 'Sept. 2026 - Auj.', en: 'Sept. 2026 - Present' },
+    title: { fr: 'Enseignant Indépendant', en: 'Independent Teacher' },
+    organization: '',
+    description: {
+      fr: '■ Cours de robotique et de programmation Arduino pour les 7 – 11 ans ■ Initiation à la robotique avec Lego pour les 5 – 8 ans',
+      en: '■ Robotics and Arduino programming classes for 7 – 11 years old ■ Introduction to robotics with Lego for 5 – 8 years old',
+    },
+  },
 ]
