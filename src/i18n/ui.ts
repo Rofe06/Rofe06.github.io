@@ -62,7 +62,8 @@ const fr = {
   'contact.text':
     'Un stage, une alternance ou un projet en tête ? Je suis toujours partant pour échanger. Ma boîte mail est ouverte.',
   'contact.cta': 'Envoyer un email',
-  'contact.cv': 'Télécharger mon CV',
+  'contact.cv.fr': 'CV en français',
+  'contact.cv.en': 'CV en anglais',
 
   'footer.built': 'Conçu et développé avec React & Vite.',
 }
@@ -130,7 +131,8 @@ const en: Record<UIKey, string> = {
   'contact.text':
     'An internship, a work-study position or a project in mind? I’m always happy to talk. My inbox is open.',
   'contact.cta': 'Send an email',
-  'contact.cv': 'Download my resume',
+  'contact.cv.fr': 'Resume in French',
+  'contact.cv.en': 'Resume in English',
 
   'footer.built': 'Designed and built with React & Vite.',
 }

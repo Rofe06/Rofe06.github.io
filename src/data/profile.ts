@@ -21,7 +21,7 @@ export interface Profile {
     linkedin?: string
     email: string
   }
-  /** Chemins des CV placés dans /public. Laisser undefined pour masquer le bouton. */
+  /** CV par langue, placés dans /public. Laisser undefined pour masquer les boutons. */
   cv?: Localized
 }
 
@@ -64,5 +64,9 @@ export const profile: Profile = {
     linkedin: 'https://www.linkedin.com/in/raphaël-guillot-145a94336/',
     email: 'raphael.guillot@epitech.eu',
   },
-  cv: undefined, // TODO : ex. { fr: '/cv-fr.pdf', en: '/cv-en.pdf' }
+  // Un CV par langue : les deux liens sont affichés sur la page Contact.
+  cv: {
+    fr: '/cv/Raphael-GUILLOT-CV-FR.pdf',
+    en: '/cv/Raphael-GUILLOT-CV-EN.pdf',
+  },
 }

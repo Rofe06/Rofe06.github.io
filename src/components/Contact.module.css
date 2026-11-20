@@ -53,6 +53,35 @@
   margin-top: 2.25rem;
 }
 
+/* Deux CV (FR / EN), sous le bouton email */
+.cvs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.cv {
+  font-size: 0.88rem;
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+}
+
+.flag {
+  display: block;
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+.flag svg {
+  width: 100%;
+  height: 100%;
+}
+
 .email {
   margin-top: 1.25rem;
   font-size: 0.85rem;

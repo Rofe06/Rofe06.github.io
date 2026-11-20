@@ -1,5 +1,7 @@
 import { profile } from '../data/profile'
 import { useLang } from '../i18n/context'
+import { LANGS } from '../i18n/types'
+import { Flag } from './flags'
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons'
 import { Reveal } from './Reveal'
 import styles from './Contact.module.css'
@@ -7,7 +9,8 @@ import styles from './Contact.module.css'
 const YEAR = new Date().getFullYear()
 
 export function Contact() {
-  const { t, tr } = useLang()
+  const { t, lang } = useLang()
+  const cv = profile.cv
 
   return (
     <div className="container">
@@ -23,13 +26,29 @@ export function Contact() {
               <MailIcon />
               {t('contact.cta')}
             </a>
-            {profile.cv && (
-              <a href={tr(profile.cv)} className="btn" download>
-                <DownloadIcon />
-                {t('contact.cv')}
-              </a>
-            )}
           </div>
+
+          {cv && (
+            <div className={styles.cvs}>
+              {/* Le CV de la langue courante en premier */}
+              {[lang, ...LANGS.filter((l) => l !== lang)].map((l) => (
+                <a
+                  key={l}
+                  href={cv[l]}
+                  className={`btn ${styles.cv}`}
+                  download={cv[l].split('/').pop()}
+                  hrefLang={l}
+                  type="application/pdf"
+                >
+                  <DownloadIcon />
+                  {t(`contact.cv.${l}`)}
+                  <span className={styles.flag} aria-hidden>
+                    <Flag lang={l} />
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
 
           <p className={`mono ${styles.email}`}>{profile.links.email}</p>
 
