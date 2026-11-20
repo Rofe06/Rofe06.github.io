@@ -60,8 +60,8 @@ export const journey: JourneyItem[] = [
     title: { fr: 'Enseignant Indépendant', en: 'Independent Teacher' },
     organization: '',
     description: {
-      fr: '■ Cours de robotique et de programmation Arduino pour les 7 – 11 ans ■ Initiation à la robotique avec Lego pour les 5 – 8 ans',
-      en: '■ Robotics and Arduino programming classes for 7 – 11 years old ■ Introduction to robotics with Lego for 5 – 8 years old',
+      fr: 'Cours de robotique et de programmation Arduino pour les 7 – 11 ans | Initiation à la robotique avec Lego pour les 5 – 8 ans',
+      en: 'Robotics and Arduino programming classes for 7 – 11 years old | Introduction to robotics with Lego for 5 – 8 years old',
     },
   },
 ]
